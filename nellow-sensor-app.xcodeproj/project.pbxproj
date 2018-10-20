@@ -12,6 +12,8 @@
 		A60ADC9921780A9300FE381F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A60ADC9721780A9300FE381F /* Main.storyboard */; };
 		A60ADC9B21780A9500FE381F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A60ADC9A21780A9500FE381F /* Assets.xcassets */; };
 		A60ADC9E21780A9500FE381F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A60ADC9C21780A9500FE381F /* LaunchScreen.storyboard */; };
+		A6DED961217B091700CEC391 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DED95F217B091700CEC391 /* SwiftyJSON.framework */; };
+		A6DED962217B091700CEC391 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DED960217B091700CEC391 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		A60ADC9A21780A9500FE381F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A60ADC9D21780A9500FE381F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A60ADC9F21780A9500FE381F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6DED95F217B091700CEC391 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		A6DED960217B091700CEC391 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6DED961217B091700CEC391 /* SwiftyJSON.framework in Frameworks */,
+				A6DED962217B091700CEC391 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +46,7 @@
 			children = (
 				A60ADC9221780A9300FE381F /* nellow-sensor-app */,
 				A60ADC9121780A9300FE381F /* Products */,
+				B003E44BAD96128B29DD99B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,15 @@
 			path = "nellow-sensor-app";
 			sourceTree = "<group>";
 		};
+		B003E44BAD96128B29DD99B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6DED960217B091700CEC391 /* Alamofire.framework */,
+				A6DED95F217B091700CEC391 /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +87,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A60ADCA221780A9500FE381F /* Build configuration list for PBXNativeTarget "nellow-sensor-app" */;
 			buildPhases = (
+				4B578E87AC44AF41A1CE00B5 /* [CP] Check Pods Manifest.lock */,
 				A60ADC8C21780A9300FE381F /* Sources */,
 				A60ADC8D21780A9300FE381F /* Frameworks */,
 				A60ADC8E21780A9300FE381F /* Resources */,
+				2CB6D8DF2735EDB8E5D86A14 /* [CP] Embed Pods Frameworks */,
+				A6DED963217B092700CEC391 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -129,6 +148,73 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2CB6D8DF2735EDB8E5D86A14 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+			showEnvVarsInLog = 0;
+		};
+		4B578E87AC44AF41A1CE00B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nellow-sensor-app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+			showEnvVarsInLog = 0;
+		};
+		A6DED963217B092700CEC391 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A60ADC8C21780A9300FE381F /* Sources */ = {
@@ -283,6 +369,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QMQ9HC29D7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "nellow-sensor-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +391,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QMQ9HC29D7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "nellow-sensor-app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
