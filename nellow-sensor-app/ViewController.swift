@@ -13,7 +13,7 @@ import SwiftyJSON
 class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     let myDevice: UIDevice = UIDevice.current
-    let flg: Bool = true
+    var canSend: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +25,23 @@ class ViewController: UIViewController {
     
     @objc func proximitySensorStateDidChange() {
         print(myDevice.proximityState)
-        if myDevice.proximityState {
-            label.text = "ちかずいたよ"
-            Alamofire.request("https://ac31deed.ngrok.io/sleep", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
-        } else {
-            label.text = "離れたよ"
-            Alamofire.request("https://ac31deed.ngrok.io/wakeup", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        
+        if canSend {
+            canSend = false
+            if myDevice.proximityState {
+                label.text = "ちかずいたよ"
+                Alamofire.request("https://647449be.ngrok.io/sleep", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+            } else {
+                label.text = "離れたよ"
+                Alamofire.request("https://647449be.ngrok.io/wakeup", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+            }
+            
+            Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(ViewController.flagChange), userInfo: nil, repeats: false)
         }
+    }
+    
+    @objc func flagChange() {
+        canSend = true
     }
     
     
