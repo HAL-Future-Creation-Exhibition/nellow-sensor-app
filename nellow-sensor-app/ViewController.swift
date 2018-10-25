@@ -10,10 +10,21 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var urlInput: UITextField!
     @IBOutlet weak var label: UILabel!
+    @IBAction func urlChange(_ sender: UIButton) {
+        serverURL = urlInput.text!
+        urlInput.text = ""
+        urlInput.resignFirstResponder()
+    }
+    
+    
     let myDevice: UIDevice = UIDevice.current
     var canSend: Bool = true
+    var serverURL: String = "https://d3d33628.ngrok.io"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +35,17 @@ class ViewController: UIViewController {
     }
     
     @objc func proximitySensorStateDidChange() {
+        print(serverURL)
         print(myDevice.proximityState)
         
         if canSend {
             canSend = false
             if myDevice.proximityState {
                 label.text = "ちかずいたよ"
-                Alamofire.request("https://647449be.ngrok.io/sleep", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+                Alamofire.request(serverURL+"/sleep", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             } else {
                 label.text = "離れたよ"
-                Alamofire.request("https://647449be.ngrok.io/wakeup", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+                Alamofire.request(serverURL+"/wakeup", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             }
             
             Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(ViewController.flagChange), userInfo: nil, repeats: false)
